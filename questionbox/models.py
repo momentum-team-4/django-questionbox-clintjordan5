@@ -7,6 +7,6 @@ list of model ideas for project
 
 users - create and login
 date/time?
-question and answer
+question and answer - title, body, user
 
 """
