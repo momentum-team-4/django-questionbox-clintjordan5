@@ -7,7 +7,7 @@ from .models import Answer
 class QuestionForm (forms.ModelForm):
     class Meta:
         model = Question
-            fields = [
+        fields = [
                 'title',
                 'body',
             ]
@@ -15,7 +15,7 @@ class QuestionForm (forms.ModelForm):
 class AnswerForm (forms.ModelForm):
     class Meta:
         model = Answer
-            fields = [
+        fields = [
                 'title',
                 'body',
             ]

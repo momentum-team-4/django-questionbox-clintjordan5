@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     # Third-party
     'debug_toolbar',
     'django_extensions',
+    'markdownify'
+    # added markdownify
 
     # Project-specific
     'users',

@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
-from questionbox import views
+from questionbox import views as questionbox_views
+# from users import views as users_views - do i need this?
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^accounts/', include('registration.backends.simple.urls')),
+    path('accounts/', include('registration.backends.simple.urls')),
     # from registration redux
+    # need to make markdownify url
 ]
 
 if settings.DEBUG:
