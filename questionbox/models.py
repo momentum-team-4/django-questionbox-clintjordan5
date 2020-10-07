@@ -1,5 +1,5 @@
 from django.db import models
-# from users.models import User
+from users.models import User
 
 
 # Create your models here.
@@ -7,10 +7,10 @@ from django.db import models
 class Question (models.Model):
     title = models.CharField (max_length=255)
     body = models.TextField (blank=False)
-    # author = models.ForeignKey(to=user)
+    author = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="questions")
 
 class Answer (models.Model):
     title = models.CharField (max_length=255)
     body = models.TextField (blank=False)
-    # author = models.ForeignKey(to=user)
-    # question=models.ForeignKey(to=question, on-delete=models.CASCADE. related_name="answers")
+    author = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="answers")
+    question = models.ForeignKey(to=Question, on_delete=models.CASCADE, related_name="answers")
