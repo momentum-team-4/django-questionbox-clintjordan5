@@ -22,7 +22,7 @@ from questionbox import views as questionbox_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
-    # from registration redux
+    # make path for landing page
     # need to make markdownify url
 ]
 
