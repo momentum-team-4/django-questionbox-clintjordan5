@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import Question, Answer
+from .forms import QuestionForm, AnswerForm
 
 # Create your views here.
 

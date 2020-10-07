@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
+from questionbox import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    # from registration redux
 ]
 
 if settings.DEBUG:
