@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import django_heroku
 import os
 from pathlib import Path
 
@@ -145,6 +145,6 @@ INTERNAL_IPS = [
 ]
 
 # Configure Django App for Heroku.
-import django_heroku
+# import django_heroku - moved to top of module per pylint suggestion
 django_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']

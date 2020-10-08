@@ -4,7 +4,8 @@ from .forms import QuestionForm, AnswerForm
 
 # Create your views here.
 
-"""
-will need question and answer form and model
-need user 
-"""
+def landingpage(request):
+    questions = Question.objects.all()
+    return render (request, "questionbox/landingpage.html", {"questions":questions})
+
+# build views and login decorator when needed for question/answer list, create, search

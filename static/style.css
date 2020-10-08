@@ -1,0 +1,11 @@
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-image: url(https://i.imgur.com/LUbAARh.jpg);
+    background-size: cover;
+    
+}

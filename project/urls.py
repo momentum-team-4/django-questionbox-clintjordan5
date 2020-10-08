@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
 from questionbox import views as questionbox_views
-# from users import views as users_views - do i need this?
+from users import views as users_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('registration.backends.simple.urls')),
-    # make path for landing page
+    path('accounts/', include('registration.backends.simple.urls')), # path for registration redux
+    path('', questionbox_views.landingpage, name='landingpage') # path for landing page
     # need to make markdownify url
+    # need paths for question/answer create, list, search
 ]
 
 if settings.DEBUG:
