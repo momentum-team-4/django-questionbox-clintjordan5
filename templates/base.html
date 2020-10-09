@@ -22,14 +22,14 @@
 <body>
     <p>Access Your Account</p>
     <button id='loginbutton'><a href="{% url 'auth_login' %}">Login</a></button>
-    <button id='loginbutton'><a href="{% url 'auth_logout' %}">Logout</a></button>
+    <button id='logoutbutton'><a href="{% url 'auth_logout' %}">Logout</a></button>
     
     {% if user.is_superuser %}
     <form>
         <button type='submit' formaction="http://127.0.0.1:8000/admin/">Admin</button>
     </form>        
     {% endif %}
-    
+
     {% block content %}
     {% endblock %}
 </body>

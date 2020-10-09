@@ -33,3 +33,5 @@ def answer_create(request):
 def answer_search(request):
     answer=Answer.objects.all()
     return render (request, 'answer/answer_search.html')
+
+    # need to use variables for question and answer, decide where to use questionform/answerform
