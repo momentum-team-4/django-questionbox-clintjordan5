@@ -9,3 +9,7 @@ def landingpage(request):
     return render (request, "questionbox/landingpage.html", {"questions":questions})
 
 # build views and login decorator when needed for question/answer list, create, search
+
+def question_list(request):
+    question=Question.objects.all()
+    return render (request, 'question/question_list.html')
