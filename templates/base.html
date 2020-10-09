@@ -20,18 +20,31 @@
 </header>
 
 <body>
+    <nav>
+        <ul>
+            <li><a href="landingpage.html">Home</a></li>
+            <li><a href="question_list.html">Question List</a></li>
+            <li><a href="question_create.html">Ask A Question</a></li>
+            <li><a href="question_search.html">Search Questions</a></li>
+            <li><a href="answer_list.html">Answer List</a></li>
+            <li><a href="answer_create.html">Answer A Question</a></li>
+            <li><a href="answer_search.html">Search Questions</a></li>
+        </ul>
+    </nav>
+    </p>
     <p>Access Your Account</p>
     <button id='loginbutton'><a href="{% url 'auth_login' %}">Login</a></button>
     <button id='logoutbutton'><a href="{% url 'auth_logout' %}">Logout</a></button>
-    
+
     {% if user.is_superuser %}
     <form>
         <button type='submit' formaction="http://127.0.0.1:8000/admin/">Admin</button>
-    </form>        
+    </form>
     {% endif %}
 
-    {% block content %}
-    {% endblock %}
+
 </body>
+<!-- {% block content %}
+{% endblock %} -->
 
 </html>
