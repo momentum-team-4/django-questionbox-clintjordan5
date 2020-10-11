@@ -76,3 +76,10 @@ def question_detail(request, question_pk):
         'answers': answers,
         'question_pk': question_pk,
     })
+
+# @login_required
+# def question_delete(request, pk):
+#     question = get_object_or_404(Question, pk=pk)
+#     question.delete()
+#     questions = Question.objects.all()
+#     return render(request, 'questionbox/question_detail.html',{'user':user,'questions':questions})
