@@ -6,8 +6,15 @@
 {% block content %}
 <h2 class='pageTitle'>Question List:</h2>
 
+{% for question in questions %}
 <div>
     <a href = "{% url 'question_create' %}" >Ask A New Question</a>
 </div>
 
+<h2>{{question.title}}</h2>
+    <p><a href ="{% url 'question_detail' question.pk %}" >View Answers</a></p>
+    <p>{{question.body}}</p>
+    <p>Asked by: {{question.author}}</p>
+    <p>Asked on: {{question.date}}</p>
+{% endfor %}
 {% endblock %}

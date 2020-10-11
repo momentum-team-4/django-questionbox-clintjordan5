@@ -3,13 +3,14 @@
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    color: white;
+    
 }
 
 body {
     background-color: teal;
     background-image: url("https://rb.gy/c2tvzg");
     background-size: cover;
+    color: white;
     
 }
 

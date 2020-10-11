@@ -5,5 +5,10 @@
 
 {% block content %}
 <h2 class='pageTitle'>Ask a Question:</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Ask">
+</form>
 
 {% endblock %}

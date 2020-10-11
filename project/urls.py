@@ -26,12 +26,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')), # path for registration redux
     path('', questionbox_views.landingpage, name='landingpage'), # path for landing page
-    path('accounts/profile/', questionbox_views.landingpage, name='landingpage'),
+    path('accounts/profile', questionbox_views.landingpage, name='landingpage'),
+     # should login path go to http://127.0.0.1:8000/accounts/login/?
 
     # questions
     path('questionbox/question_list', questionbox_views.question_list, name='question_list'), # question list
     path('questionbox/question_create', questionbox_views.question_create, name='question_create'), # question create/ask
     path('questionbox/question_search', questionbox_views.question_search, name='question_search'), # question search
+    path('questionbox/question_detail/<int:question_pk>', questionbox_views.question_detail, name='question_detail'), # question detail
 
     # answers
 
@@ -39,7 +41,7 @@ urlpatterns = [
     path('questionbox/answer_create', questionbox_views.answer_create, name='answer_create'), # answer create
     path('questionbox/answer_search', questionbox_views.answer_search, name='answer_search'), # answer search
 
-    # should login path go to http://127.0.0.1:8000/accounts/login/?
+   
 
 
 ]
