@@ -36,6 +36,9 @@
         </ul>
     </nav>
     </p>
+    {% if user.is_authenticated %}
+    <p><h2>Hello, {{request.user.username}} <h2><p></p>
+    {% endif %}
     <p><h2>Access Your Account<h2></p>
     <button id='loginbutton'><a href="{% url 'auth_login' %}">Login</a></button>
     <button id='logoutbutton'><a href="{% url 'auth_logout' %}">Logout</a></button>
