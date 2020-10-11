@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
 from questionbox import views as questionbox_views
+# from questionbox.models import Question, Answer
 
 
 urlpatterns = [
