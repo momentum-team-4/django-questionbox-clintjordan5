@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from os import name
+from questionbox.views import landingpage
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
@@ -25,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')), # path for registration redux
     path('', questionbox_views.landingpage, name='landingpage'), # path for landing page
+    path('accounts/profile/', questionbox_views.landingpage, name='landingpage'),
 
     # questions
     path('questionbox/question_list', questionbox_views.question_list, name='question_list'), # question list
