@@ -40,7 +40,7 @@ urlpatterns = [
     path('questionbox/answer_list', questionbox_views.answer_list, name='answer_list'), # answer list
     path('questionbox/answer_create', questionbox_views.answer_create, name='answer_create'), # answer create
     path('questionbox/answer_search', questionbox_views.answer_search, name='answer_search'), # answer search
-    path('questionbox/answer_detail',questionbox_views.answer_detail, name='answer_detail'), # answer detail
+    path('questionbox/answer_detail', questionbox_views.answer_detail, name='answer_detail'), # answer detail
     path('questionbox/answer_delete/<int:answer_pk>', questionbox_views.answer_delete, name="answer_delete"), # answer delete
 
    

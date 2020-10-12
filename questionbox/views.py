@@ -70,16 +70,35 @@ def answer_list(request):
     display = {'answers':answer}
     return render (request, 'questionbox/answer_list.html', display)
 
+# @login_required
+# def answer_create(request):
+#     if request.method == "GET":
+#         form = AnswerForm()
+#     else:
+#         form = AnswerForm(data=request.POST)
+#         if form.is_valid():
+#             answer = form.save
+#             answer.author = request.user
+#             answer.save()
+#             return redirect (to="answer_list", pk=answer.pk)
+#     return render (request, 'questionbox/answer_create.html', {'form':form})
+
 @login_required
-def answer_create(request):
-    form = AnswerForm(data=request.POST)
-    if form.is_valid():
-        answer = form.save
-        answer.user=request.user
-        answer.save()
-        return redirect (to="answer_list", pk=answer.pk)
-    form = QuestionForm()
-    return render (request, 'questionbox/answer_create.html', {'form':form})
+def answer_create(request, question_pk):
+    if request.method == 'GET':
+        form = AnswerForm()
+    else:
+        form = AnswerForm(data=request.POST)
+        question = get_object_or_404(Question, pk=question_pk)
+        if form.is_valid():
+            print(form)
+            answer = form.save(commit=False)
+            answer.author = request.user
+            answer.answered_for = question
+            answer.save()
+            return redirect(to='question_detail', question_pk=question_pk)
+    return render(request, 'questionbox/answer_create.html',
+    {'form':form, 'question_pk': question_pk})
 
 @login_required
 def answer_search(request):

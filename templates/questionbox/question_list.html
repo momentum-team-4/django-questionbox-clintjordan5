@@ -12,10 +12,11 @@
 </div>
 
 <h2>{{question.title}}</h2>
-    <p><a href ="{% url 'question_detail' question.pk %}" >View Answers</a></p>
     <p>{{question.body}}</p>
+    <p><a href ="{% url 'answer_list' %}" >View Answers</a></p>
     <p>Asked by: {{question.author}}</p>
     <p>Asked on: {{question.date}}</p>
+    
 
 
 {% endfor %}

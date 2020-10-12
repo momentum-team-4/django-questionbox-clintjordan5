@@ -6,4 +6,19 @@
 {% block content %}
 <h2 class='pageTitle'>Answer List:</h2>
 
+{% for answer in answers %}
+<div>
+    <a href = "{% url 'answer_create' %}" >Answer A New Question</a>
+</div>
+
+<h2>Question Asked:</h2>
+    <h3>{{answer.question.title}}</h3>
+    <p>{{answer.title}}<p>
+    <!-- <p><a href ="{% url 'answer_detail'%}" >View Answers</a></p> -->
+    <p>{{answer.body}}</p>
+    <p>Answered by: {{answer.author}}</p>
+    <p>Answered on: {{answer.date}}</p>
+
+{% endfor %}    
+
 {% endblock %}

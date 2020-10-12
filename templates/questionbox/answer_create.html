@@ -7,7 +7,7 @@
 <h2 class='pageTitle'>Answer A Question:</h2>
 
 <div>
-    <form action="{% url 'answer_create' question_pk=question_pk %}" method="POST">
+    <form action= "{% url 'answer_create' pk=question.pk %}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <div>
