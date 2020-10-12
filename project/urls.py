@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from os import name
+from questionbox.views import answer_delete
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
@@ -32,13 +33,15 @@ urlpatterns = [
     path('questionbox/question_create', questionbox_views.question_create, name='question_create'), # question create/ask
     path('questionbox/question_search', questionbox_views.question_search, name='question_search'), # question search
     path('questionbox/question_detail/<int:question_pk>', questionbox_views.question_detail, name='question_detail'), # question detail
-    # path('questionbox/question_delete/<int:pk>', questionbox_views.question_delete, name=question_delete), # question delete
+    path('questionbox/question_delete/<int:pk>', questionbox_views.question_delete, name='question_delete'), # question delete
 
     # answers
 
     path('questionbox/answer_list', questionbox_views.answer_list, name='answer_list'), # answer list
     path('questionbox/answer_create', questionbox_views.answer_create, name='answer_create'), # answer create
     path('questionbox/answer_search', questionbox_views.answer_search, name='answer_search'), # answer search
+    path('questionbox/answer_detail',questionbox_views.answer_detail, name='answer_detail'), # answer detail
+    path('questionbox/answer_delete/<int:answer_pk>', questionbox_views.answer_delete, name="answer_delete"), # answer delete
 
    
 

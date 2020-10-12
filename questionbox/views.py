@@ -4,6 +4,9 @@ from .forms import QuestionForm, AnswerForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+# landing page
+# question list, create, search, delete, detail
+# answer list, create, search, delete, detail
 
 def landingpage(request):
     questions = Question.objects.all()
@@ -36,6 +39,32 @@ def question_search(request):
 # need some help with this view
 
 @login_required
+def question_delete(request, question_pk):
+    question = Question.objects.get(pk=question_pk)
+    if request.method == "POST":
+        question.delete()
+        return redirect("questions_list")
+    return render(request, "questionbox/question_delete.html", {'questions': question} )
+
+def question_detail(request, question_pk):
+    question = get_object_or_404(Question, pk=question_pk)
+    answers = question.answers.all()
+    form = AnswerForm()
+    if request.method == "POST":
+        form = AnswerForm(data=request.POST)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.question = question
+            answer.author = request.user
+            answer.save()
+            return redirect(to="question_detail", pk=question_pk)
+    return render(request, "questionbox/question_detail.html", {
+        'question': question,
+        'answers': answers,
+        'question_pk': question_pk,
+    })
+
+@login_required
 def answer_list(request):
     answer=Answer.objects.all()
     display = {'answers':answer}
@@ -59,27 +88,16 @@ def answer_search(request):
 # will need to revise along with question search
 
 
-def question_detail(request, question_pk):
-    question = get_object_or_404(Question, pk=question_pk)
-    answers = question.answers.all()
-    form = AnswerForm()
+@login_required
+def answer_delete(request, answer_pk):
+    answer = get_object_or_404(Answer, pk=answer_pk)
     if request.method == "POST":
-        form = AnswerForm(data=request.POST)
-        if form.is_valid():
-            answer = form.save(commit=False)
-            answer.question = question
-            answer.author = request.user
-            answer.save()
-            return redirect(to="question_detail", pk=question_pk)
-    return render(request, "questionbox/question_detail.html", {
-        'question': question,
-        'answers': answers,
-        'question_pk': question_pk,
-    })
+        question = answer.answered_for.get()
+        question_pk = question.pk
+        answer.delete()
+        return redirect('question_detail', question_pk=question_pk)
+    return render(request, "questionbox/answer_delete.html", {'answer':answer})
 
-# @login_required
-# def question_delete(request, pk):
-#     question = get_object_or_404(Question, pk=pk)
-#     question.delete()
-#     questions = Question.objects.all()
-#     return render(request, 'questionbox/question_detail.html',{'user':user,'questions':questions})
+def answer_detail(request, answer_pk):
+    answer = get_object_or_404(Answer, pk=answer_pk)
+    return render(request, 'questions/answer_detail.html', {'answer':answer})

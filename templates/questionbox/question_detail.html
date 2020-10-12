@@ -6,4 +6,43 @@
 {% block content %}
 <h2 class='pageTitle'>Question Detail:</h2>
 
-{% endblock %}
+<div>
+    <h2>Question Title: {{question.title}}</h2>
+    <p>Detail:{{question.body}}</p>
+    <p>Asked by: {{question.author}}</p>
+    <p>Asked on: {{question.date_added}}</p>
+
+</div>
+
+
+<div>
+    <h2>Answers</h2>
+
+
+    <div>
+        {% for answer in answers %}
+
+        <h2> </h2>
+        <p>Detail:{{answer.body}}</p>
+        <p>Answered by: {{answer.author}}</p>
+        <p>Answered on: {{answer.date_added}}</p>
+
+        {% endfor %}
+
+    </div>
+
+    <div>
+        <h2>Add another Answer</h2>
+
+        <form action="{% url 'answer_create' question_pk=question_pk %}" method="POST">
+            {% csrf_token %}
+            {{ AnswerForm.as_p }}
+            <div>
+                <button type="submit">Submit Your Answer</button>
+            </div>
+
+        </form>
+    </div>
+
+
+    {% endblock %}
