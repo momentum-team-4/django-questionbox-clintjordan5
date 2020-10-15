@@ -17,6 +17,7 @@ psycopg2 = "*"
 django-heroku = "*"
 gunicorn = "*"
 django-registration-redux = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.8"
