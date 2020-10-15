@@ -6,8 +6,3 @@ urlpatterns = [
     path('API/<int:pk>/', views.API_detail),
 ]
 
-from django.urls import path, include
-
-urlpatterns = [
-    path('', include('API.urls')),
-]

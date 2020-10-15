@@ -43,6 +43,9 @@ urlpatterns = [
     path('questionbox/answer_detail', questionbox_views.answer_detail, name='answer_detail'), # answer detail
     path('questionbox/answer_delete/<int:answer_pk>', questionbox_views.answer_delete, name="answer_delete"), # answer delete
 
+
+    path('', include('API.urls')),
+
    
 
 
@@ -56,3 +59,5 @@ if settings.DEBUG:
         # For django versions before 2.0:
         # url(r'^__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
+
+
