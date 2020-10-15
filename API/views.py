@@ -26,9 +26,6 @@ def API_list(request):
 
 @csrf_exempt
 def API_detail(request, pk):
-    """
-    Retrieve, update or delete a code API.
-    """
     try:
         API = API.objects.get(pk=pk)
     except API.DoesNotExist:
