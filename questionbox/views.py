@@ -70,18 +70,6 @@ def answer_list(request):
     display = {'answers':answer}
     return render (request, 'questionbox/answer_list.html', display)
 
-# @login_required
-# def answer_create(request):
-#     if request.method == "GET":
-#         form = AnswerForm()
-#     else:
-#         form = AnswerForm(data=request.POST)
-#         if form.is_valid():
-#             answer = form.save
-#             answer.author = request.user
-#             answer.save()
-#             return redirect (to="answer_list", pk=answer.pk)
-#     return render (request, 'questionbox/answer_create.html', {'form':form})
 
 @login_required
 def answer_create(request, question_pk):
